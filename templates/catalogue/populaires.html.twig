@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les plus empruntés — BiblioTech{% endblock %}
+
+{% block body %}
+    <main class="conteneur">
+        <section class="catalogue-entete">
+            <div>
+                <h1 class="page-titre">Les plus empruntés</h1>
+                <p class="page-sous-titre">
+                    Les livres les plus empruntés de la médiathèque
+                </p>
+            </div>
+        </section>
+
+        <section class="grille" aria-label="Livres les plus empruntés">
+            {% for livre in livres %}
+                {% include 'catalogue/_carte.html.twig' with {
+                    livre: livre
+                } only %}
+            {% else %}
+                <p>Aucun emprunt enregistré pour le moment.</p>
+            {% endfor %}
+        </section>
+    </main>
+{% endblock %}
